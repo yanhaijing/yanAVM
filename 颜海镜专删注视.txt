@@ -1,0 +1,38 @@
+;下面的注释包含自解压脚本命令
+
+Path=颜海镜\颜海镜AVM
+Savepath
+Setup=register.exe
+Setup=颜海镜AVM使用说明.txt
+setup=颜海镜官网\颜海镜官方主页.html
+Overwrite=1
+Title=颜海镜AVM2.Obeta版安装
+License=《许可协议》
+{
+<body bgcolor=lightgreen>
+ <marquee direction=left behavior="alternate">
+    <h2><font color=red>《许可协议》</font></2>
+ </marquee>
+ <marquee direction=right behavior="alternate">
+  <p><font color=green>使用前请认真阅读</p>
+ </marquee>
+  <p><font face="宋体" size="2">
+1.此软件为绿色版，请放心使用，没有任何商业目的。</br>
+
+2.对于此软件您有任何好的建议可向我QQ：776771343 空间留言。</br>
+
+3.此软件版权最终归颜海镜所有，禁止任何人用于商业用途。</br>
+
+4.同意上述条款，请点击“我知道了”开始安装。</br>
+
+                                颜海镜 </br>
+
+                              2011.2.14</br>
+   </font>
+  </p>
+</body>
+}
+Shortcut=D, 颜海镜AVM.exe, , , 颜海镜AVM, image\Char1.ico
+Shortcut=P, register.exe, 颜海镜\颜海镜AVM, , register, image\register.ico
+Shortcut=P, uninst.bat, 颜海镜\颜海镜AVM, , 卸载颜海镜AVM, image\Recycle.ico
+Shortcut=P, 颜海镜官网\颜海镜官方主页.html, 颜海镜\颜海镜AVM, ,颜海镜官方主页,

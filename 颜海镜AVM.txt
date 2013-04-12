@@ -1,0 +1,93 @@
+@echo off
+mode con cols=50 lines=18
+title 颜海镜AVM2.0beta版
+
+:main
+echo on
+echo %~1
+pause
+echo %~1|findstr/ie "\.asm">nul||goto sorry
+::if "%1"=="" goto :sorry
+::if not "%~x1"==".asm" goto :sorry
+color 4a
+cls
+echo            ☆☆☆☆☆☆☆☆☆☆☆☆☆   
+echo            ☆       颜海镜AVM      ☆
+echo            ☆☆☆☆☆☆☆☆☆☆☆☆☆
+echo.
+echo     颜海镜是一种理念
+echo.
+echo     我们每天都在努力，只为更好为您服务
+echo  ----------------------------------------------  
+echo   将要汇编的文件拖到我上面 (*^__^*) 嘻嘻...
+echo.   
+echo   确认汇编请按【回车】，否则请直接关闭此窗口...
+echo  ------------------------------------------------
+pause>nul
+mode con lines=44
+
+rem ===以下为创建目标文件夹===
+if not exist %~dp1YanMasm\obj\lst (
+md %~dp1YanMasm\obj\lst\ 2>null
+)
+if not exist %~dp1YanMasm\obj\crf (
+md %~dp1YanMasm\obj\crf\ 2>null
+)
+if not exist %~dp1YanMasm\exe\map (
+md %~dp1YanMasm\exe\map\ 2>null
+)
+
+echo masming...
+masm %~dp1%~nx1,%~dp1YanMasm\obj\,%~dp1YanMasm\obj\lst\,%~dp1YanMasm\obj\crf\;
+echo %~dp1%~nx1
+if not exist %~dp1YanMasm\obj\%~n1.obj goto :error
+echo masm successfullly...
+echo linking...
+link %~dp1YanMasm\obj\%~n1.obj,%~dp1YanMasm\exe\,%~dp1YanMasm\exe\map\,;
+
+mode con cols=50 lines=12
+color 2f
+echo.
+echo              YanhaijingTD      
+echo            QQ Qun:55306466    
+echo.
+echo   Congratulate! Output %~dp1YanMasm\
+echo.
+echo   Press any key to quit...
+echo  ----------------------------------------
+echo                          Yanhaijing
+pause>nul 
+exit
+
+rem ===无效号码提示===
+:sorry
+color f5
+cls
+echo.&echo.&echo.&echo.
+echo      ！！！失败 ！！！     
+echo.
+echo      很遗憾-_-。sorry！ 未能帮您解决问题
+echo.
+echo      您确认要编译的文件扩展名为.asm
+echo.
+echo      请放心，我们的工程师已经着手解决此问题
+echo.
+echo  --------------------------------------------
+echo.
+echo          若要退出请直接关闭此窗口...
+echo.
+echo                              颜海镜
+pause>nul
+goto :eof
+
+rem ===出错提示===
+:error
+color f5
+echo.
+echo 	Sorry! Something is wrong...
+echo 	Press any key to quit...
+echo   ---------------------------------------
+echo                          Yanhaijing 
+pause>nul
+exit
+goto :eof
